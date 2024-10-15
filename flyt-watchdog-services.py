@@ -1,3 +1,5 @@
+import subprocess
+
 # Service Watchdog
 print('Starting Service Watchdog')
 
