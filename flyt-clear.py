@@ -45,4 +45,5 @@ with open("/etc/flyt/data/flyt-wifi-active.json", 'w+') as file:
     file.write("")
     
     
-subprocess.call(['chmod', '-R', '666', '/etc/flyt/data'])
+subprocess.call(['chmod', '-R', '777', '/etc/flyt/data'])
+subprocess.call(['chmod', '-R', '777', '/etc/flyt/scripts'])
