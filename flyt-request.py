@@ -18,7 +18,11 @@ def listen(ip,port):
 
     if ans == "flyt-wifi-scan":
         print("Running Flyt-WiFi-Scan")
-        subprocess.call(['python3', '/etc/flyt/scripts/flyt-wifi-scan.py'])
+        result = subprocess.run(['python3', '/etc/flyt/scripts/flyt-wifi-scan.py'], capture_output=True, text=True)
+        if result.returncode == 0:
+            print(result.stdout)
+        else:
+            print(result.stderr)
 
     if ans == "flyt-wifi-active":
         print("Running Flyt-WiFi-Active")
