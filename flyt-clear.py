@@ -1,3 +1,5 @@
+import subprocess
+
 # Flyt Clear
 
 with open("/etc/flyt/data/flyt-stats-0.json", 'w+') as file:
@@ -41,3 +43,6 @@ with open("/etc/flyt/data/flyt-wifi-manage.json", 'w+') as file:
 
 with open("/etc/flyt/data/flyt-wifi-active.json", 'w+') as file:
     file.write("")
+    
+    
+subprocess.call(['chmod', '-R', '666', '/etc/flyt/data'])
