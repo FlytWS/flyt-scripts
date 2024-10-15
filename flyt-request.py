@@ -10,23 +10,19 @@ def listen(ip,port):
 
     #Receive data
     ans = conn.recv(1024).decode()
-    sys.stdout.write(ans)
+    #sys.stdout.write(ans)
 
     if ans == "flyt-wifi-manage":
         print("Running Flyt-WiFi-Manage")
-        subprocess.call(['python3', '/etc/flyt/scripts/flyt-wifi-manage.py'])
+        subprocess.run(['python3', '/etc/flyt/scripts/flyt-wifi-manage.py'])
 
     if ans == "flyt-wifi-scan":
         print("Running Flyt-WiFi-Scan")
-        result = subprocess.run(['python3', '/etc/flyt/scripts/flyt-wifi-scan.py'], capture_output=True, text=True)
-        if result.returncode == 0:
-            print(result.stdout)
-        else:
-            print(result.stderr)
+        subprocess.run(['python3', '/etc/flyt/scripts/flyt-wifi-scan.py'])
 
     if ans == "flyt-wifi-active":
         print("Running Flyt-WiFi-Active")
-        subprocess.call(['python3', '/etc/flyt/scripts/flyt-wifi-active.py'])
+        subprocess.run(['python3', '/etc/flyt/scripts/flyt-wifi-active.py'])
 
     s.close()
 
