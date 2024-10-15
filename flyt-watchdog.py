@@ -100,15 +100,17 @@ def servicewatchdog():
 def boot():
     print('Boot')
 
+    subprocess.call(["python3", "/etc/flyt/scripts/flyt-update-html.py"])
+    subprocess.call(["python3", "/etc/flyt/scripts/flyt-update-scripts.py"])
+
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-clear.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-access-key.py"])
-    subprocess.call(["python3", "/etc/flyt/scripts/flyt-serial.sh"])
-    subprocess.call(["python3", "/etc/flyt/scripts/flyt-update-html.py"])
+    subprocess.call(["python3", "/etc/flyt/scripts/flyt-serial.sh"])    
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-scan.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-manage.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-active.py"])    
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-request.py"])
-    
+
 
 def t10seconds():
     while True:
