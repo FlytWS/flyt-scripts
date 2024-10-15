@@ -116,8 +116,8 @@ def t10seconds():
         print('T-10')
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-2.py"])
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-gnss.py"])
-        subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-manage.py"])
-        subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-active.py"])
+        #subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-manage.py"])
+        #subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-active.py"])
         time.sleep(10)
 
 
@@ -129,7 +129,7 @@ def t30seconds():
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-services.py"])
         #subprocess.call(["python3", "/etc/flyt/scripts/flyt-usb.py"])
         #subprocess.call(["python3", "/etc/flyt/scripts/get-stats-usb.sh"])
-        subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-scan.py"])
+        #subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-scan.py"])
         time.sleep(30)
 
 
@@ -151,13 +151,13 @@ def t3600seconds():
     while True:
         print('T-3600')
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-update-html.py"])
+        subprocess.call(["python3", "/etc/flyt/scripts/flyt-update-scripts.py"])
         time.sleep(3600)
 
 
 def t600seconds():
     while True:
         print('T-600')
-        subprocess.call(["python3", "/etc/flyt/scripts/flyt-update-html.py"])
         subprocess.call(["python3", "/etc/flyt/scripts/call-tower-gate.sh"])
         time.sleep(600)
 
