@@ -4,7 +4,7 @@ import psutil
 
 # Stats Medium Cycle
 
-
+data = []
 
 #Temperature
 try:
