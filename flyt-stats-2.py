@@ -4,8 +4,7 @@ import psutil
 
 # Stats Fast Cycle
 
-with open("/etc/flyt/data/flyt-stats-2.json", "r") as jsonFile:
-    data = json.load(jsonFile)
+data = {};
 
 
 #Boot
@@ -67,8 +66,6 @@ except:
 
 
 
-with open("/etc/flyt/data/flyt-stats-2.json", 'w+') as file:
-    file.write("{}")    
     
 with open("/etc/flyt/data/flyt-stats-2.json", "w") as jsonFile:
     json.dump(data, jsonFile, ensure_ascii = False)
