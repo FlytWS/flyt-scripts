@@ -76,6 +76,8 @@ except:
 
 
 
-
+with open("/etc/flyt/data/flyt-stats-0.json", 'w+') as file:
+    file.write("{}")
+    
 with open("/etc/flyt/data/flyt-stats-0.json", "w") as jsonFile:
     json.dump(data, jsonFile, ensure_ascii = False)
