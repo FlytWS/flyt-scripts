@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 os.chdir('/etc/flyt/scripts')
 os.system('git reset --hard origin/main')

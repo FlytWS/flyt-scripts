@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 os.chdir('/var/www/html')
 os.system('git reset --hard origin/main')
