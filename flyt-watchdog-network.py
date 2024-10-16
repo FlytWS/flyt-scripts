@@ -7,6 +7,7 @@ def detect_file_changes(file_path, interval=1):
     while True:
         current_modified = os.path.getmtime(file_path)
         if current_modified != last_modified:
+            print("Activated")
             subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-1.py"])
             last_modified = current_modified
         time.sleep(interval)
