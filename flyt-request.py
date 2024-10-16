@@ -23,6 +23,10 @@ def listen(ip,port):
     if ans == "flyt-wifi-active":
         print("Running Flyt-WiFi-Active")
         subprocess.run(['python3', '/etc/flyt/scripts/flyt-wifi-active.py'])
+        
+    if ans == "flyt-stats-1":
+        print("Running Flyt-Stats-1")
+        subprocess.run(['python3', '/etc/flyt/scripts/flyt-stats-1.py'])
 
     s.close()
 
