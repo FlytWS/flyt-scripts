@@ -11,4 +11,7 @@ def detect_file_changes(file_path, interval=1):
             last_modified = current_modified
         time.sleep(interval)
 
+
+with open("/etc/flyt/data/flyt-watchdog-network", 'w+') as file:
+    file.write("")
 detect_file_changes("/etc/flyt/data/flyt-watchdog-network")
