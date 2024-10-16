@@ -17,6 +17,7 @@ def boot():
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-request.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/set-accesskey.sh"])    
     subprocess.call(["python3", "/etc/flyt/scripts/register-node.sh"])
+    subprocess.call(["python3", "/etc/flyt/scripts/flyt-watchdog-network.py"])
 
 
 def t10seconds():
