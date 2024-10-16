@@ -4,8 +4,6 @@ import psutil
 
 # Stats Medium Cycle
 
-with open("/etc/flyt/data/flyt-stats-1.json", "r") as jsonFile:
-    data = json.load(jsonFile)
 
 
 #Temperature
@@ -67,6 +65,7 @@ try:
         
 except:
     print("Unable to read storage")
+
 
 
 
