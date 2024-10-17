@@ -2,97 +2,34 @@ import json
 import subprocess
 
 
-# Flyt Services
+# Service Stat Watchdog
+print('Starting Stats Services')
 
-with open("/etc/flyt/data/flyt-services.json", "r") as jsonFile:
-    data = json.load(jsonFile)
+data = {}
 
-
-# cron
-try:
-	stat = subprocess.check_output(["systemctl", "show", "cron", "-p", "ActiveState"], text=True)
-	data["cron"] = stat
-except:
-	data["cron"] = "NotFound"
-	pass
-
-
-
-# lm-sensors
-try:
-	stat = subprocess.check_output(["systemctl", "show", "lm-sensors", "-p", "ActiveState"], text=True)
-	data["lm-sensors"] = stat
-except:
-	data["lm-sensors"] = "NotFound"
-	pass
+def check_service(service_name):
+    try:
+        output = subprocess.run(["systemctl", "status", service_name], capture_output=True)
+        status = output.stdout.decode().strip()
+        if "inactive" in status:
+            data[service_name] = "inactive"
+        else:
+            data[service_name] = "running"
+    except:
+        data[service_name] = "notfound"
 
 
-
-# vnstat
-try:
-	stat = subprocess.check_output(["systemctl", "show", "vnstat", "-p", "ActiveState"], text=True)
-	data["vnstat"] = stat
-except:
-	data["vnstat"] = "NotFound"
-	pass
+check_service("cron")
+check_service("gpsd")
+check_service("lm-sensors")
+check_service("vnstat")
+check_service("readsb")
+check_service("vector")
+check_service("tar1090")
+check_service("graphs1090")
 
 
 
-# php8.2-fpm
-try:
-	stat = subprocess.check_output(["systemctl", "show", "php8.2-fpm", "-p", "ActiveState"], text=True)
-	data["php8.2-fpm"] = stat
-except:
-	data["php8.2-fpm"] = "NotFound"
-	pass
-
-
-# nginx
-try:
-	stat = subprocess.check_output(["systemctl", "show", "nginx", "-p", "ActiveState"], text=True)
-	data["nginx"] = stat
-except:
-	data["nginx"] = "NotFound"
-	pass
-
-
-# readsb
-try:
-	stat = subprocess.check_output(["systemctl", "show", "readsb", "-p", "ActiveState"], text=True)
-	data["readsb"] = stat
-except:
-	data["readsb"] = "NotFound"
-	pass
-
-
-# vector
-try:
-	stat = subprocess.check_output(["systemctl", "show", "vector", "-p", "ActiveState"], text=True)
-	data["vector"] = stat
-except:
-	data["vector"] = "NotFound"
-	pass
-
-
-# tar1090
-try:
-	stat = subprocess.check_output(["systemctl", "show", "tar1090", "-p", "ActiveState"], text=True)
-	data["tar1090"] = stat
-except:
-	data["tar1090"] = "NotFound"
-	pass
-
-
-# graphs1090
-try:
-	stat = subprocess.check_output(["systemctl", "show", "graphs1090", "-p", "ActiveState"], text=True)
-	data["graphs1090"] = stat
-except:
-	data["graphs1090"] = "NotFound"
-	pass
-
-
-
-
+    
 with open("/etc/flyt/data/flyt-services.json", "w") as jsonFile:
     json.dump(data, jsonFile)
