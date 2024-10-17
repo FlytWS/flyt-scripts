@@ -10,13 +10,12 @@ def boot():
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-watchdog-services.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-clear.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-access-key.py"])
-    subprocess.call(["python3", "/etc/flyt/scripts/flyt-serial.sh"])    
+    subprocess.call(["bash", "/etc/flyt/scripts/flyt-serial.sh"])    
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-scan.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-manage.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-active.py"])    
-    subprocess.call(["python3", "/etc/flyt/scripts/flyt-request.py"])
-    subprocess.call(["python3", "/etc/flyt/scripts/set-accesskey.sh"])    
-    subprocess.call(["python3", "/etc/flyt/scripts/register-node.sh"])
+    subprocess.call(["python3", "/etc/flyt/scripts/flyt-request.py"])  
+    subprocess.call(["bash", "/etc/flyt/scripts/register-node.sh"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-watchdog-network.py"])
 
 
@@ -33,7 +32,7 @@ def t30seconds():
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-1.py"])
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-services.py"])
         #subprocess.call(["python3", "/etc/flyt/scripts/flyt-usb.py"])
-        #subprocess.call(["python3", "/etc/flyt/scripts/get-stats-usb.sh"])
+        subprocess.call(["bash", "/etc/flyt/scripts/get-stats-usb.sh"])
         time.sleep(30)
 
 
@@ -59,7 +58,7 @@ def t3600seconds():
 
 def t600seconds():
     while True:
-        subprocess.call(["python3", "/etc/flyt/scripts/call-tower-gate.sh"])
+        subprocess.call(["bash", "/etc/flyt/scripts/call-tower-gate.sh"])
         time.sleep(600)
 
 
