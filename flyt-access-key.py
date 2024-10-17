@@ -6,7 +6,7 @@ import time
 
 # Flyt Access Key
 
-def id_generator(size=24, chars=string.ascii_uppercase + string.digits):
+def id_generator(size=48, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 
