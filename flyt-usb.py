@@ -16,5 +16,5 @@ for i in df.split(b'\n'):
             devices.append(dinfo)
             
 
-with open("/etc/flyt/data/flyt-usb.json", "w") as file:
-    file.write(devices)
+with open("/etc/flyt/data/flyt-usb.json", "w") as jsonFile:
+    json.dumps(devices, jsonFile)
