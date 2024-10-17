@@ -1,12 +1,10 @@
 #!/bin/bash
 
-serial=`cat /etc/flyt/data/serial`
+serial=`cat /etc/flyt/serial`
 model=`cat /etc/flyt/model`
-accesskey=`cat /etc/flyt/data/accesskey`
-location=`cat /etc/flyt/data/location`
-antennaid=`cat /etc/flyt/data/wingbits`
-statsnetwork=`cat /var/www/html/flyt-data/stats_network.json`
-statshost=`cat /var/www/html/flyt-data/stats_host.json`
+accesskey=`cat /etc/flyt/accesskey`
+location=`cat /etc/flyt/data/flyt-location.json`
+antennaid=`cat /etc/flyt/wingbits`
 
 
 generate_post_data()
@@ -17,9 +15,7 @@ generate_post_data()
   "accesskey": "$accesskey",
   "model": "$model",
   "antennaid": "$antennaid",
-  "location": $location,
-  "statsnetwork": $statsnetwork,
-  "statshost": $statshost
+  "location": $location
 }
 EOF
 }

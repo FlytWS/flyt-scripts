@@ -5,7 +5,7 @@ import platform
 
 # Stats Slow Cycle
 
-data = {};
+data = {}
 
 
 #Platform

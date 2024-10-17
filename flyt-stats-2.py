@@ -4,7 +4,7 @@ import psutil
 
 # Stats Fast Cycle
 
-data = {};
+data = {}
 
 
 #Boot

@@ -1,4 +1,5 @@
-import socket, subprocess, sys
+import socket
+import subprocess
 
 def listen(ip,port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

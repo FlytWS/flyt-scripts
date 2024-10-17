@@ -4,8 +4,7 @@ import subprocess
 # Flyt Bandwidth
 
 
-with open("/etc/flyt/data/flyt-bandwidth.json", "r") as jsonFile:
-    data = json.load(jsonFile)
+data = {}
 
 
 # vnstat
@@ -15,7 +14,6 @@ try:
 except:
 	print("Error "+str(IOError))
 	pass
-
 
 
 with open("/etc/flyt/data/flyt-bandwidth.json", "w") as jsonFile:

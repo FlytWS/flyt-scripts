@@ -3,7 +3,6 @@ import subprocess
 
 
 # Service Stats
-print('Starting Stats Services')
 
 data = {}
 
