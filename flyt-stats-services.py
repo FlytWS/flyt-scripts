@@ -2,7 +2,7 @@ import json
 import subprocess
 
 
-# Service Stat Watchdog
+# Service Stats
 print('Starting Stats Services')
 
 data = {}
