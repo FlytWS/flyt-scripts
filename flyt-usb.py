@@ -6,7 +6,10 @@ import json
 
 device_re = re.compile(b"Bus\s+(?P<bus>\d+)\s+Device\s+(?P<device>\d+).+ID\s(?P<id>\w+:\w+)\s(?P<tag>.+)$", re.I)
 df = subprocess.check_output("lsusb")
-devices = {}
+
+print(df)
+
+devices = []
 for i in df.split(b'\n'):
     if i:
         info = device_re.match(i)
@@ -18,5 +21,5 @@ for i in df.split(b'\n'):
 
 print(devices)
 
-with open("/etc/flyt/data/flyt-usb.json", "w") as jsonFile:
-    json.dump(devices, jsonFile)
+#with open("/etc/flyt/data/flyt-usb.json", "w") as jsonFile:
+#    json.dump(devices, jsonFile)
