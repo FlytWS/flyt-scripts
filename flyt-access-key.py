@@ -19,7 +19,7 @@ with open("/etc/flyt/accesskey.json", "r") as jsonFile:
     data = json.load(jsonFile)
 
 
-if data["accesskey"]:
+if "accesskey" in data:
     print ("Access Key Already Set")
 else:
     timestamp = int(time.time())
