@@ -14,8 +14,9 @@ with open("/etc/flyt/data/flyt-stats-2.json", 'w+') as file:
 with open("/etc/flyt/data/flyt-gnss.json", 'w+') as file:
     file.write("{}")
 
-with open("/etc/flyt/data/flyt-location.json", 'w+') as file:
-    file.write("{}")
+if not os.path.exists("/etc/flyt/data/flyt-location.json"):
+    with open("/etc/flyt/data/flyt-location.json", 'w+') as file:
+        file.write("{}")
 
 with open("/etc/flyt/data/flyt-bandwidth.json", 'w+') as file:
     file.write("{}")
