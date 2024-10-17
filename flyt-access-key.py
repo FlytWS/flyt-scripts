@@ -18,7 +18,8 @@ if not os.path.exists("/etc/flyt/accesskey.json"):
 with open("/etc/flyt/accesskey.json", "r") as jsonFile:
     data = json.load(jsonFile)
 
-if (data["accesskey"]):
+
+if data["accesskey"]:
     print ("Access Key Already Set")
 else:
     timestamp = int(time.time())
