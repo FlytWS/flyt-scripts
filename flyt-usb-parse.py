@@ -73,7 +73,9 @@ with open("/etc/flyt/data/flyt-usb-parse.json", "w") as jsonFile:
     
     
     
-print("")
+print("--")
+print("--")
+print("--")
     
 # Peripherals (USB connected devices)
 devices = []
