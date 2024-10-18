@@ -74,7 +74,13 @@ for device in input_file.split("\n\n"):
     devices.append(tree)
 
 
+if len(sys.argv) == 1:
+    json.dump(devices, sys.stdout)
+    exit(0)
+
+
 reports = []
+
 for device in devices:
     descriptor = device["Device Descriptor"]
     interfaces = descriptor["Configuration Descriptor"][0]["Interface Descriptor"]
