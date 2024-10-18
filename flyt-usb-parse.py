@@ -96,7 +96,8 @@ for device in devices:
 for report in reports:
     basename = "devicereports/{}_{}_USB{}".format(
         report["idVendor"].split()[0],
-        report["idProduct"].split()[0]
+        report["idProduct"].split()[0],
+        report["bcdUSB"],
     )
 
 print("## REPORT ")
