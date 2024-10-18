@@ -41,7 +41,7 @@ def make_tree(nodes):
 def parse(device):
     lines = device.split("\n")
     lines = [line for line in lines if "Warning: Descriptor too short" not in line]
-    assert lines[0].startswith("Bus")
+    assert lines[0].startswith("ID")
     nodes = split_nodes(lines[1:])
     tree = make_tree(nodes)
     return tree
