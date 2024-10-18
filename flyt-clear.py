@@ -36,6 +36,9 @@ with open("/etc/flyt/data/flyt-usb-parse.json", 'w+') as file:
 with open("/etc/flyt/data/flyt-usb-raw", 'w+') as file:
     file.write("")
     
+with open("/etc/flyt/data/flyt-usb-dump", 'w+') as file:
+    file.write("")
+    
 with open("/etc/flyt/data/flyt-usb", 'w+') as file:
     file.write("")
 

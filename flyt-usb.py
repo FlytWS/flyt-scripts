@@ -26,7 +26,7 @@ with open("/etc/flyt/data/flyt-usb-parse.json", "w") as jsonFile:
     
     
 
-dt = subprocess.check_output("usb-devices | cut -d: -f2", universal_newlines=True)
+dt = subprocess.check_output("usb-devices", universal_newlines=True)
 
 with open("/etc/flyt/data/flyt-usb-dump", 'w+') as file:
     file.write(dt)
