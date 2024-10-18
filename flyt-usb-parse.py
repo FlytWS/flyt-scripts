@@ -58,24 +58,7 @@ def make_tree(nodes):
         elif type(node) == list:
             assert len(node) == 2
             key = node[0]
-            if (
-                key.startswith("bm")
-                or key.startswith("wHubCharacteristic")
-                or key.startswith("wSpeedsSupported")
-                or key.startswith("bFunctionalitySupport")
-                or key.startswith("Device Status:")
-                or key.startswith("bFlags")
-                or key.startswith("wChannelConfig")
-            ):
-                # bitmasks
-                node_arity = ONE
-                key, raw_value = key.split(" ", 1)
-                node[1].insert(0, "raw_value  " + raw_value.strip())
-            elif key.endswith(":"):
-                key = key[:-1]
-                node_arity = arity[key]
-            else:
-                raise ValueError("Don't know how to handle group key: {}".format(key))
+
             if node_arity == ONE:
                 assert key not in tree
                 tree[key] = make_tree(node[1])
