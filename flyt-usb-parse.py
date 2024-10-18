@@ -78,33 +78,3 @@ if len(sys.argv) == 1:
     json.dump(devices, sys.stdout)
     exit(0)
 
-
-reports = []
-
-for device in devices:
-    descriptor = device["Device Descriptor"]
-    interfaces = descriptor["Configuration Descriptor"][0]["Interface Descriptor"]
-    report = {}
-    reports.append(report)
-    report["idVendor"] = descriptor["idVendor"]
-    report["idProduct"] = descriptor["idProduct"]
-    report["iProduct"] = descriptor["iProduct"]
-    report["bcdUSB"] = descriptor["bcdUSB"]
-    report["formats"] = []
-    report["endpoints"] = []
-    print("#{idVendor} - {idProduct}".format(**descriptor))
-    for interface in interfaces:
-        print("Alternate setting: {bAlternateSetting}".format(**interface))
-            
-            
-
-
-for report in reports:
-    basename = "devicereports/{}_{}_USB{}".format(
-        report["idVendor"].split()[0],
-        report["idProduct"].split()[0],
-        report["bcdUSB"],
-    )
-
-print("## REPORT ")
-print(report)
