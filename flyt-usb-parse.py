@@ -24,29 +24,7 @@ import sys
 ONE = 1
 MANY = 2
 
-arity = {
-    "Device Descriptor": ONE,
-    "Configuration Descriptor": MANY,
-    "Interface Descriptor": MANY,
-    "Endpoint Descriptor": MANY,
-    "Hub Descriptor": ONE,
-    " Hub Port Status": ONE,
-    "Binary Object Store Descriptor": ONE,
-    "USB 2.0 Extension Device Capability": ONE,
-    "SuperSpeed USB Device Capability": ONE,
-    "SuperSpeedPlus USB Device Capability": ONE,
-    "Container ID Device Capability": ONE,
-    "Interface Association": MANY,
-    "VideoControl Interface Descriptor": MANY,
-    "VideoStreaming Interface Descriptor": MANY,
-    "AudioControl Interface Descriptor": MANY,
-    "AudioStreaming Interface Descriptor": MANY,
-    "AudioStreaming Endpoint Descriptor": MANY,
-    "Device Qualifier (for other device speed)": ONE,
-    "CDC Header": ONE,
-    "CDC Union": ONE,
-    "CDC Ethernet": ONE,
-}
+
 
 
 def split_nodes(lines):
@@ -138,6 +116,7 @@ if len(sys.argv) == 1:
 
 
 reports = []
+
 for device in devices:
     descriptor = device["Device Descriptor"]
     interfaces = descriptor["Configuration Descriptor"][0]["Interface Descriptor"]
