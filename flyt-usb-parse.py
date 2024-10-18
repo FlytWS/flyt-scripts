@@ -28,9 +28,8 @@ def make_tree(nodes):
     tree = {}
     for node in nodes:
         if type(node) == str:
-            #key, *maybe_value = node.split("  ", 1)
-            #tree[key] = maybe_value[0].strip() if maybe_value else True
-            tree[key] = True
+            key, *maybe_value = node.split("  ", 1)
+            tree[key] = maybe_value[0].strip() if maybe_value else True
         elif type(node) == list:
             assert len(node) == 2
             key = node[0]
@@ -58,4 +57,7 @@ for device in input_file.split("\n\n"):
 
 
 
-json.dump(devices, sys.stdout)
+#json.dump(devices, sys.stdout)
+
+with open("/etc/flyt/data/flyt-usb-parse.json", "w") as jsonFile:
+    json.dump(devices, jsonFile)
