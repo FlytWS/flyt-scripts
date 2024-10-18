@@ -125,7 +125,7 @@ def parse(device):
 
 devices = []
 # input_file = sys.stdin
-input_file = subprocess.check_output("lsusb").encode()
+input_file = subprocess.check_output("lsusb").decode()
 for device in input_file.split("\n\n"):
     device = device.strip()
     tree = parse(device)
