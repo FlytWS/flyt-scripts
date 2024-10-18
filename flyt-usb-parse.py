@@ -1,26 +1,8 @@
 #!/usr/bin/env python
 
-"""
-Parse the output of lsusb to extract detailed information about
-the alternate settings supported by USB Video Class compliant
-devices.
-
-Usage:
-sudo lsusb -v | ./analyze-lsusb.py
--> converts the entire lsusb output to JSON
-
-sudo lsusb -v | ./analyze-lsusb.py --json
-sudo lsusb -v | ./analyze-lsusb.py --yaml
-sudo lsusb -v | ./analyze-lsusb.py --txt
--> converts individual webcam entires into JSON/YAML/TXT,
-   generating a file for each webcam found
-"""
-
 import json
 import subprocess
 import sys
-
-
 
 
 def split_nodes(lines):
@@ -46,8 +28,9 @@ def make_tree(nodes):
     tree = {}
     for node in nodes:
         if type(node) == str:
-            key, *maybe_value = node.split("  ", 1)
-            tree[key] = maybe_value[0].strip() if maybe_value else True
+            #key, *maybe_value = node.split("  ", 1)
+            #tree[key] = maybe_value[0].strip() if maybe_value else True
+            tree[key] = True
         elif type(node) == list:
             assert len(node) == 2
             key = node[0]
@@ -74,7 +57,5 @@ for device in input_file.split("\n\n"):
     devices.append(tree)
 
 
-if len(sys.argv) == 1:
-    json.dump(devices, sys.stdout)
-    exit(0)
 
+json.dump(devices, sys.stdout)
