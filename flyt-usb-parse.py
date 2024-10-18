@@ -3,6 +3,7 @@
 import json
 import subprocess
 import sys
+import re
 
 
 def split_nodes(lines):
