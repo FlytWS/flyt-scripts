@@ -141,21 +141,17 @@ reports = []
 for device in devices:
     descriptor = device["Device Descriptor"]
     interfaces = descriptor["Configuration Descriptor"][0]["Interface Descriptor"]
-    interfaces = [
-        i for i in interfaces if i["bInterfaceSubClass"] == "2 Video Streaming"
-    ]
-    if interfaces:
-        report = {}
-        reports.append(report)
-        report["idVendor"] = descriptor["idVendor"]
-        report["idProduct"] = descriptor["idProduct"]
-        report["iProduct"] = descriptor["iProduct"]
-        report["bcdUSB"] = descriptor["bcdUSB"]
-        report["formats"] = []
-        report["endpoints"] = []
-        print("#{idVendor} - {idProduct}".format(**descriptor))
-        for interface in interfaces:
-            print("Alternate setting: {bAlternateSetting}".format(**interface))
+    report = {}
+    reports.append(report)
+    report["idVendor"] = descriptor["idVendor"]
+    report["idProduct"] = descriptor["idProduct"]
+    report["iProduct"] = descriptor["iProduct"]
+    report["bcdUSB"] = descriptor["bcdUSB"]
+    report["formats"] = []
+    report["endpoints"] = []
+    print("#{idVendor} - {idProduct}".format(**descriptor))
+    for interface in interfaces:
+        print("Alternate setting: {bAlternateSetting}".format(**interface))
             
             
 
