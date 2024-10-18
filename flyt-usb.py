@@ -18,8 +18,15 @@ for i in df.split('\n'):
 
 
 
-with open("/etc/flyt/data/flyt-usb-raw.json", 'w+') as file:
+with open("/etc/flyt/data/flyt-usb-raw", 'w+') as file:
     file.write(df)
 
 with open("/etc/flyt/data/flyt-usb-parse.json", "w") as jsonFile:
     json.dump(devices, jsonFile)
+    
+    
+
+dt = subprocess.check_output("usb-devices | cut -d: -f2", universal_newlines=True)
+
+with open("/etc/flyt/data/flyt-usb-dump", 'w+') as file:
+    file.write(dt)

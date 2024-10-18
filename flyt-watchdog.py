@@ -31,8 +31,7 @@ def t30seconds():
     while True:
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-1.py"])
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-services.py"])
-        #subprocess.call(["python3", "/etc/flyt/scripts/flyt-usb.py"])
-        subprocess.call(["bash", "/etc/flyt/scripts/get-stats-usb.sh"])
+        subprocess.call(["python3", "/etc/flyt/scripts/flyt-usb.py"])
         time.sleep(30)
 
 
