@@ -10,8 +10,6 @@ def check_service(service_name):
     if "inactive" in status:
         subprocess.run(["systemctl", "restart", service_name])
         print(f"{service_name} service has been restarted")
-    else:
-        print(f"{service_name} service is running")
 
 
 
