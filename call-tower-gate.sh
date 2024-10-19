@@ -2,7 +2,7 @@
 
 serial=`cat /etc/flyt/serial`
 model=`cat /etc/flyt/model`
-accesskey=`cat /etc/flyt/accesskey`
+accesskey=`cat /etc/flyt/accesskey.json`
 location=`cat /etc/flyt/data/flyt-location.json`
 antennaid=`cat /etc/flyt/wingbits`
 
