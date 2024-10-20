@@ -9,7 +9,7 @@ data = {}
 
 # vnstat
 try:
-	stat = check_output(["vnstat", "--json"])
+	stat = subprocess.check_output(["vnstat", "--json"])
 	#data["vnstat"] = stat
 except:
 	print("Error "+str(IOError))
