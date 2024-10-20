@@ -13,7 +13,7 @@ output = {}
 try:
     output = subprocess.run(["vnstat", "--json"], capture_output=True)
     #status = output.stdout.decode().strip()
-    status = output.stdout
+    status = output.stdout.decode()
     #data['vnstat'] = status
 	#data["vnstat"] = stat
 except:
