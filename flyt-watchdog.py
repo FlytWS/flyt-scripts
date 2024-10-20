@@ -19,9 +19,17 @@ def boot():
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-watchdog-network.py"])
 
 
-def t10seconds():
+
+
+def t5seconds():
     while True:
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-2.py"])
+        time.sleep(5)
+
+
+
+def t10seconds():
+    while True:
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-gnss.py"])
         time.sleep(10)
 
@@ -32,6 +40,7 @@ def t30seconds():
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-1.py"])
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-stats-services.py"])
         subprocess.call(["python3", "/etc/flyt/scripts/flyt-usb.py"])
+        subprocess.call(["python3", "/etc/flyt/scripts/flyt-bandwidth.py"])
         time.sleep(30)
 
 
@@ -68,6 +77,9 @@ thread0 = threading.Thread(target=boot)
 thread0.start()
 
 time.sleep(30)
+
+thread1 = threading.Thread(target=t5seconds)
+thread1.start()
 
 thread2 = threading.Thread(target=t10seconds)
 thread2.start()
