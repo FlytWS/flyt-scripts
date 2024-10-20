@@ -9,12 +9,12 @@ data = {}
 
 # vnstat
 try:
-	stat = subprocess.check_output(["vnstat", "--json"])
+	stat = subprocess.check_output("vnstat", "--json")
 	#data["vnstat"] = stat
 except:
 	print("Error "+str(IOError))
 	pass
 
 
-with open("/etc/flyt/data/flyt-bandwidth.json", "w") as jsonFile:
-    json.dump(stat, jsonFile)
+with open("/etc/flyt/data/flyt-bandwidth.json", "w") as file:
+    file.write(stat)
