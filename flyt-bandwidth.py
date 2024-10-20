@@ -10,8 +10,8 @@ data = {}
 # vnstat
 try:
     output = subprocess.run(["vnstat", "--json"], capture_output=True)
-    #status = output.stdout.decode().strip()
-    data[vnstat] = output
+    status = output.stdout.decode().strip()
+    data['vnstat'] = output
 	#data["vnstat"] = stat
 except:
 	print("Error "+str(IOError))
