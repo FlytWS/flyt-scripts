@@ -19,8 +19,10 @@ try:
 
     gpsdar['device']=gpsd.device()
     gpsdar['mode']=str(packet.mode)
-    gpsdar['satellites']=str(packet.sats)
-    
+    if packet.sats:
+        gpsdar['satellites']=str(packet.sats)
+    else:
+        gpsdar['satellites']=str(0)
 
     if packet.mode >= 2:
 
