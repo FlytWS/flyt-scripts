@@ -17,7 +17,7 @@ try:
     packet = gpsd.get_current()
 
 
-    gpsdar['device']=str(gpsd.device())
+    gpsdar['device']=gpsd.device()
     gpsdar['mode']=str(packet.mode)
     gpsdar['satellites']=str(packet.sats)
     
@@ -27,7 +27,7 @@ try:
         gpsdar['latitude']=str(packet.lat)
         gpsdar['longitude']=str(packet.lon)
         gpsdar['time']=str(packet.time)
-        gpsdar['error']=str(packet.error)
+        gpsdar['error']=packet.error
         gpsdar['position_precision']=str(packet.position_precision())
 
 
