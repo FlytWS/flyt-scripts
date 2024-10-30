@@ -12,7 +12,9 @@ try:
     gpsd.connect()
 
     time.sleep(4)
-
+    
+    packet = None
+    
     # Get gps position
     packet = gpsd.get_current()
 
