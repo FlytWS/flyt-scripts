@@ -227,7 +227,8 @@ def convert_ec_pub_to_pem(raw_pub_key):
     """
     Convert to the key to PEM format. Expects bytes
     """
-    public_key_der = bytearray.fromhex('3059301306072A8648CE3D020106082A8648CE3D03010703420004') + raw_pub_key
+    #public_key_der = bytearray.fromhex('3059301306072A8648CE3D020106082A8648CE3D03010703420004') + raw_pub_key
+    public_key_der = raw_pub_key
     public_key_b64 = base64.b64encode(public_key_der).decode('ascii')
     public_key_pem = (
         ''.join(public_key_b64[i:i + 64] for i in range(0, len(public_key_b64), 64))
