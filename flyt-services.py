@@ -18,7 +18,6 @@ def check_service(service_name):
         data[service_name] = "notfound"
 
 
-check_service("cron")
 check_service("gpsd")
 check_service("lm-sensors")
 check_service("vnstat")
