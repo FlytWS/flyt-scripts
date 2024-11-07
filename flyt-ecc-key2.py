@@ -72,8 +72,7 @@ def convert_ec_pub_to_pem(raw_pub_key):
 
 def info(iface='i2c', device='ecc', **kwargs):
 
-    address='6a'
-    
+
     ATCA_SUCCESS = 0x00
 
     # Get the target default config
@@ -87,6 +86,7 @@ def info(iface='i2c', device='ecc', **kwargs):
 
 
     cfg.cfg.atcai2c.bus = 1
+    cfg.cfg.atcai2c.address = '6a'
 
     # Initialize the stack
     assert atcab_init(cfg) == ATCA_SUCCESS
