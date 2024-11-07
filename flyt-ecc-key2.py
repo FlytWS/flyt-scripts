@@ -167,5 +167,5 @@ if __name__ == '__main__':
     device = "ecc"
     params = "address=6a"
 
-    info(iface, device, params)
+    info(iface, device, **parse_interface_params(params))
     print('\nDone')
