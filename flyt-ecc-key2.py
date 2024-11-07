@@ -158,7 +158,8 @@ def info(iface='hid', device='ecc', **kwargs):
     atcab_release()
 
 
-    if __name__ == '__main__':
+
+if __name__ == '__main__':
     parser = setup_example_runner(__file__)
     args = parser.parse_args()
 
