@@ -77,6 +77,8 @@ def info(iface='i2c', device='ecc', **kwargs):
 
     # Get the target default config
     cfg = eval('cfg_at{}a_{}_default()'.format(atca_names_map.get(device), atca_names_map.get(iface)))
+    
+    kwargs = {'address': '6a'}
 
     # Set interface parameters
     if kwargs is not None:
@@ -86,7 +88,7 @@ def info(iface='i2c', device='ecc', **kwargs):
 
 
     cfg.cfg.atcai2c.bus = 1
-    cfg.cfg.atcai2c.address = "6a"
+
 
     # Initialize the stack
     assert atcab_init(cfg) == ATCA_SUCCESS
