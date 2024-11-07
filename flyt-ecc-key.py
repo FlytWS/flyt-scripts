@@ -43,7 +43,7 @@ _configs = {'ATECC508A': _atecc508_config,
 
 
 
-def configure_device(iface='i2c', device='ecc', i2c_addr=None, keygen=True, **kwargs):
+def configure_device(iface='i2c', device='ecc', i2c_addr='6a', keygen=False, **kwargs):
     ATCA_SUCCESS = 0x00
 
     # Loading cryptoauthlib(python specific)
