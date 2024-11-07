@@ -86,7 +86,7 @@ def info(iface='i2c', device='ecc', **kwargs):
 
 
     cfg.cfg.atcai2c.bus = 1
-    cfg.cfg.address = "6a"
+    cfg.cfg.atcai2c.address = "6a"
 
     # Initialize the stack
     assert atcab_init(cfg) == ATCA_SUCCESS
