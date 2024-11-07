@@ -127,6 +127,9 @@ def info(iface='i2c', device='ecc', **kwargs):
         public_key = bytearray(64)
         assert atcab_get_pubkey(0, public_key) == ATCA_SUCCESS
         print(convert_ec_pub_to_pem(public_key))
+        publictopem = convert_ec_pub_to_pem(public_key)
+        with open("/etc/flyt/publickey", 'w+') as file:
+            file.write(publictopem)
 
     # Free the library
     atcab_release()
