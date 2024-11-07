@@ -20,13 +20,8 @@ def setup_example_runner(module):
     """
     Common helper function that sets up the script entry for all examples
     """
-    example = os.path.basename(module).split('.')[0]
 
-    try:
-        with open(example + '.md', 'r') as f:
-            details = f.read()
-    except FileNotFoundError:
-        details = example.upper() + ' Example'
+    details = 'Flyt'
 
     parser = argparse.ArgumentParser(description=details, 
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -160,12 +155,8 @@ def info(iface='hid', device='ecc', **kwargs):
 
 
 if __name__ == '__main__':
-    #parser = setup_example_runner(__file__)
-    #args = parser.parse_args()
+    parser = setup_example_runner(__file__)
+    args = parser.parse_args()
 
-    iface = "i2c"
-    device = "ecc"
-    params = "address=6a"
-
-    info(iface, device, **parse_interface_params(params))
+    info(args.iface, args.device, **parse_interface_params(args.params))
     print('\nDone')
