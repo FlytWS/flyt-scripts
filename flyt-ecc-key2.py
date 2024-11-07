@@ -71,6 +71,9 @@ def convert_ec_pub_to_pem(raw_pub_key):
 
 
 def info(iface='i2c', device='ecc', **kwargs):
+
+    address='6a'
+    
     ATCA_SUCCESS = 0x00
 
     # Get the target default config
@@ -137,8 +140,6 @@ def info(iface='i2c', device='ecc', **kwargs):
 if __name__ == '__main__':
     parser = setup_runner(__file__)
     args = parser.parse_args()
-
-    address='6a'
 
     info(args.iface, args.device, **parse_interface_params(args.params))
     print('\nDone')
