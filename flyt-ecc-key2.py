@@ -20,13 +20,6 @@ def setup_example_runner(module):
     """
     Common helper function that sets up the script entry for all examples
     """
-    example = os.path.basename(module).split('.')[0]
-
-    try:
-        with open(example + '.md', 'r') as f:
-            details = f.read()
-    except FileNotFoundError:
-        details = example.upper() + ' Example'
 
     parser = argparse.ArgumentParser(description=details, 
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
