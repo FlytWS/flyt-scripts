@@ -16,17 +16,14 @@ except NameError:
     FileNotFoundError = IOError
 
 
-def setup_example_runner(module):
-    """
-    Common helper function that sets up the script entry for all examples
-    """
+def setup_runner(module):
 
     details = 'Flyt'
 
     parser = argparse.ArgumentParser(description=details, 
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
 
-    parser.add_argument('-i', '--iface', default='hid', choices=['i2c', 'hid'], help='Interface type (default: hid)')
+    parser.add_argument('-i', '--iface', default='i2c', choices=['i2c', 'hid'], help='Interface type (default: i2c)')
     parser.add_argument('-d', '--device', default='ecc', choices=['ecc', 'sha'], help='Device type (default: ecc)')
     parser.add_argument('-p', '--params', nargs='*', help='Interface Parameters in the form key=value')
 
@@ -65,19 +62,6 @@ def convert_ec_pub_to_pem(raw_pub_key):
     return public_key_pem
 
 
-def check_if_rpi():
-    """
-    Does a basic check to see if the script is running on a Raspberry Pi
-    """
-    is_rpi = False
-    try:
-        with open('/sys/firmware/devicetree/base/model', 'r') as f:
-            if f.readline().startswith('Raspberry'):
-                is_rpi = True
-    except FileNotFoundError:
-        is_rpi = False
-
-    return is_rpi
 
 
 
@@ -88,11 +72,7 @@ def check_if_rpi():
 
 
 
-
-
-
-
-def info(iface='hid', device='ecc', **kwargs):
+def info(iface='i2c', device='ecc', **kwargs):
     ATCA_SUCCESS = 0x00
 
     # Get the target default config
@@ -104,9 +84,8 @@ def info(iface='hid', device='ecc', **kwargs):
             icfg = getattr(cfg.cfg, 'atca{}'.format(iface))
             setattr(icfg, k, int(v, 16))
 
-    # Basic Raspberry Pi I2C check
-    if 'i2c' == iface and check_if_rpi():
-        cfg.cfg.atcai2c.bus = 1
+
+    cfg.cfg.atcai2c.bus = 1
 
     # Initialize the stack
     assert atcab_init(cfg) == ATCA_SUCCESS
@@ -155,7 +134,7 @@ def info(iface='hid', device='ecc', **kwargs):
 
 
 if __name__ == '__main__':
-    parser = setup_example_runner(__file__)
+    parser = setup_runner(__file__)
     args = parser.parse_args()
 
     info(args.iface, args.device, **parse_interface_params(args.params))
