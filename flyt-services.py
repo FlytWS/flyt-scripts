@@ -10,12 +10,16 @@ def check_service(service_name):
     try:
         output = subprocess.run(["systemctl", "status", service_name], capture_output=True)
         status = output.stdout.decode().strip()
-        if "inactive" in status:
-            data[service_name] = "inactive"
-        else:
+        if "running" in status:
             data[service_name] = "running"
+        elif "inactive" in status:
+            data[service_name] = "inactive"
+        elif "ERROR" in status:
+            data[service_name] = "not-installed"
+        else:
+            data[service_name] = "unknown"
     except:
-        data[service_name] = "notfound"
+        data[service_name] = "unknown"
 
 
 check_service("gpsd")
