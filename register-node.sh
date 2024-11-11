@@ -2,7 +2,7 @@
 
 model=`cat /etc/flyt/model`
 serial=`cat /etc/flyt/serial`
-accesskey=`cat /etc/flyt/accesskey`
+accesskey=`cat /etc/flyt/accesskey.json`
 
 url="https://tower.flyt.ws/registration.php?serial=$serial&model=$model&accesskey=$accesskey"
 urlparsed="$( echo "$url" | sed 's/ /%20/g' )"

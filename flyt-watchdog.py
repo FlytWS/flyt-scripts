@@ -16,7 +16,7 @@ def boot():
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-active.py"])    
     #subprocess.call(["python3", "/etc/flyt/scripts/flyt-request.py"])  
     subprocess.call(["bash", "/etc/flyt/scripts/register-node.sh"])
-    subprocess.call(["python3", "/etc/flyt/scripts/flyt-watchdog-network.py"])
+    #subprocess.call(["python3", "/etc/flyt/scripts/flyt-watchdog-network.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-ecc-key.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-angry-purple-tiger.py"])    
 
