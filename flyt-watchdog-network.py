@@ -2,6 +2,8 @@ import os
 import time
 import subprocess
 
+print('Flyt Watchdog Network')
+
 def detect_file_changes(file_path, interval=1):
     last_modified = os.path.getmtime(file_path)
     while True:

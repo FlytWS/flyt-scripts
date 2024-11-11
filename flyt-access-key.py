@@ -4,6 +4,8 @@ import random
 import string
 import time
 
+print('Flyt Access Key')
+
 # Flyt Access Key
 
 def id_generator(size=48, chars=string.ascii_uppercase + string.digits):

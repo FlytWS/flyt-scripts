@@ -1,6 +1,8 @@
 import subprocess
 import os
 
+print('Flyt Clear')
+
 # Flyt Clear
 
 with open("/etc/flyt/data/flyt-stats-0.json", 'w+') as file:

@@ -143,5 +143,6 @@ if __name__ == '__main__':
     parser = setup_runner(__file__)
     args = parser.parse_args()
 
+    print('Flyt ECC Key')
     info(args.iface, args.device, **parse_interface_params(args.params))
     print('\nDone')
