@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
 import subprocess
+
+print('Flyt WiFi Scan')
 
 result = subprocess.run(['nmcli', '-t', '-f', 'SSID', 'device', 'wifi', 'list', '--rescan', 'yes'], capture_output=True, text=True)
 

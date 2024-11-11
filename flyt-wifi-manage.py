@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
 import subprocess
+
+print('Flyt WiFi Manage')
 
 result = subprocess.run(['nmcli', '-t', '-f', 'NAME', 'connection', 'show'], capture_output=True, text=True)
 
