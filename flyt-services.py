@@ -6,18 +6,25 @@ import subprocess
 
 data = {}
 
+
 def check_service(service_name):
     try:
         output = subprocess.run(["systemctl", "status", service_name], capture_output=True)
         status = output.stdout.decode().strip()
-        if "running" in status:
-            data[service_name] = "running"
+        if "active (running)" in status:
+            data[service_name] = "active"
         elif "inactive" in status:
             data[service_name] = "inactive"
-        elif "ERROR" in status:
-            data[service_name] = "not-installed"
+        elif "failed" in status:
+            data[service_name] = "failed"
+        elif "reloading" in status:
+            data[service_name] = "reloading"
+        elif "activating" in status:
+            data[service_name] = "activating"
+        elif "deactivating" in status:
+            data[service_name] = "deactivating"
         else:
-            data[service_name] = "unknown"
+            data[service_name] = "not-installed"
     except:
         data[service_name] = "unknown"
 

@@ -73,6 +73,7 @@ def t600seconds():
 
 
 
+time.sleep(5)
 
 thread0 = threading.Thread(target=boot)
 thread0.start()

@@ -14,6 +14,7 @@ def check_service(service_name):
 
 
 check_service("cron")
+check_service("log2ram")
 check_service("php8.2-fpm")
 check_service("nginx")
 check_service("gpsd")
