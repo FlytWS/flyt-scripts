@@ -9,8 +9,12 @@ def boot():
 
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-watchdog-services.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-clear.py"])
+
+    time.sleep(5)
+
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-access-key.py"])
     subprocess.call(["bash", "/etc/flyt/scripts/flyt-serial.sh"])
+    subprocess.call(["python3", "/etc/flyt/scripts/flyt-system-variables.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-scan.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-manage.py"])
     subprocess.call(["python3", "/etc/flyt/scripts/flyt-wifi-active.py"])    
