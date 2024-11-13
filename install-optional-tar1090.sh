@@ -6,20 +6,18 @@
 #bash tar1090-install.sh /run/readsb
 
 
-umask 022
+#umask 022
 
 
 set -e
 trap 'echo "[ERROR] Error in line $LINENO when executing: $BASH_COMMAND"' ERR
-renice 10 $$
+#renice 10 $$
 
 srcdir=/run/readsb
 nginx=yes
 repo="https://github.com/wiedehopf/tar1090"
 db_repo="https://github.com/wiedehopf/tar1090-db"
 ipath=/usr/local/share/tar1090
-
-
 
 
 function useSystemd () { command -v systemctl &>/dev/null; }
@@ -34,45 +32,6 @@ if useSystemd && ! id -u tar1090 &>/dev/null
 then
     adduser --system --home "$ipath" --no-create-home --quiet tar1090 || adduser --system --home-dir "$ipath" --no-create-home tar1090
 fi
-
-# terminate with /
-command_package="git git/jq jq/curl curl"
-packages=()
-
-while read -r -d '/' CMD PKG
-do
-    if ! command -v "$CMD" &>/dev/null
-    then
-        #echo "command $CMD not found, will try to install package $PKG"
-        packages+=("$PKG")
-    fi
-done < <(echo "$command_package")
-
-if [[ -n "${packages[*]}" ]]; then
-    if ! command -v "apt-get" &>/dev/null; then
-        echo "Please install the following packages and rerun the install:"
-        echo "${packages[*]}"
-        exit 1
-    fi
-    echo "Installing required packages: ${packages[*]}"
-    if ! apt-get install -y --no-install-suggests --no-install-recommends "${packages[@]}"; then
-        apt-get update || true
-        apt-get install -y --no-install-suggests --no-install-recommends "${packages[@]}" || true
-    fi
-    hash -r || true
-    while read -r -d '/' CMD PKG
-    do
-        if ! command -v "$CMD" &>/dev/null
-        then
-            echo "command $CMD not found, seems we failed to install package $PKG"
-            echo "FATAL: Exiting!"
-            exit 1
-        fi
-    done < <(echo "$command_package")
-fi
-
-
-
 
 dir=$(pwd)
 
@@ -295,4 +254,4 @@ for name in $names; do
 done
 
 
-sudo systemctl restart nginx
+systemctl restart nginx
