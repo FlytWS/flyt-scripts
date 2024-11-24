@@ -252,6 +252,3 @@ done < <(echo "$instances")
 for name in $names; do
 	echo "All done! Tar1090 is available at http://$(ip route get 1.2.3.4 | grep -m1 -o -P 'src \K[0-9,.]*')/$name"
 done
-
-
-systemctl restart nginx
